@@ -24,21 +24,22 @@ const SignUp = ({ show, setShow, icon1, icon2, token, setToken }) => {
     setErrorMessage("");
     try {
       const response = await axios.post('https://site--marvbackend--s4qnmrl7fg46.code.run/user/signup',
+        // const response = await axios.post('http://localhost:3000/user/signup',
         {
           username,
           email,
           password
         }
       );
-      console.log('response1:', response)
+      // console.log('response1:', response)
       if (response) {
-        console.log('response after if:', response)
+        // console.log('response after if:', response)
         Cookies.set('MarvLogin', response.data.token, { expires: 15 });
-        console.log('response.data.token:', response.data.token);
+        // console.log('response.data.token:', response.data.token);
         setToken(response.data.token);
-        console.log('token:', token);
+        // console.log('token:', token);
         setShow(false);
-        console.log('show:', show);
+        // console.log('show:', show);
         navigate("/login");
       }
     } catch (error) {

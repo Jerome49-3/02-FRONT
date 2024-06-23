@@ -16,6 +16,7 @@ const Comics = ({ name, limit, skip, setSkip, page, setPage }) => {
       //essayer une requete get
       try {
         const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/comics?title=${name}&limit=${limit}&skip=${skip}`)
+        // const response = await axios.get(`http://localhost:3000/comics?title=${name}&limit=${limit}&skip=${skip}`)
         console.log('data Comics:', response.data);
         //si response
         if (response) {

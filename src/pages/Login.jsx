@@ -16,15 +16,16 @@ const Login = ({ setToken }) => {
     setErrorMessage("");
     try {
       const response = await axios.post('https://site--marvbackend--s4qnmrl7fg46.code.run/user/login',
+        // const response = await axios.post('http://localhost:3000/user/login',
         {
           email: email,
           password: password,
         }
       );
       // console.log('response:', response);
-      console.log('response.data.token1:', response?.data?.token);
+      // console.log('response.data.token1:', response?.data?.token);
       if (response.data.token) {
-        console.log('response.data.token2:', response?.data?.token);
+        // console.log('response.data.token2:', response?.data?.token);
         Cookies.set('MarvLogin', response.data.token, { expires: 15 });
         setToken(response.data.token);
         navigate("/")

@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Loading from '../components/Loading';
 
 
-const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
+const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage, setShow, count, setCount }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   // console.log('fav0', fav);
@@ -19,11 +19,18 @@ const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
       //essayer une requete get
       try {
         const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/characters?name=${name}&limit=${limit}&skip=${skip}`)
-        // console.log('data Home:', response.data);
+        // const response = await axios.get(`http://localhost:3000/characters?name=${name}&limit=${limit}&skip=${skip}`)
+        // console.log('data Home:', response);
         //si response
         if (response) {
           //mettre a jour la valeur du state data avec le retour de la response.data
-          setData(response.data);
+          const data = response.data.dataMarv.data;
+          const counter = response.data.dataMarv.count;
+          // console.log('data1:', data);
+          setData(data);
+          // console.log('data2:', data);
+          setCount(counter);
+          console.log('count:', count);
           //actualiser la valeur du loading à false 
           setIsLoading(false);
         }
@@ -39,9 +46,7 @@ const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
     <>
       <main>
         <section className="wrapper" id='top'>
-          {page < 0 ? (
-            null
-          ) : (<div className="arrLeftTop" onClick={() => {
+          <div className={page > 0 ? 'arrLeftTop' : 'hide'} onClick={() => {
             console.log('page:', page);
             //au click, j'incrémente de 1
             const newPage = page - 1;
@@ -52,8 +57,8 @@ const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
             const movPage = newPage * limit;
             console.log('movPage:', movPage);
             setSkip(movPage)
-          }}><FontAwesomeIcon icon='chevron-left' /></div>)}
-          <div className="arrRightTop" onClick={() => {
+          }}><FontAwesomeIcon icon='chevron-left' /></div>
+          <div className={skip < count ? 'arrRightTop' : 'hide'} onClick={() => {
             console.log('page:', page);
             //au click, j'incrémente de 1
             const newPage = page + 1;
@@ -70,8 +75,8 @@ const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
               // console.log('card:', card, 'cardId:', card._id);
               const characterId = card._id;
               return (
-                <div className='boxCardFav'>
-                  <Link to={`/character/${characterId}`} key={key}>
+                <div className='boxCardFav' key={key}>
+                  <Link to={`/character/${characterId}`} >
                     <div className="back">
                       <h3>
                         {card.name}

@@ -16,6 +16,7 @@ const ComicsId = () => {
       //essayer une requete get
       try {
         const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/comics/${characterId}`)
+        // const response = await axios.get(`http://localhost:3000/comics/${characterId}`)
         console.log('data /comics/:characterId :', response.data);
         //si response
         if (response) {
