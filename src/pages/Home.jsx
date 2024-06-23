@@ -18,7 +18,7 @@ const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
     const fetchData = async () => {
       //essayer une requete get
       try {
-        const response = await axios.get(`http://localhost:3000/characters?name=${name}&limit=${limit}&skip=${skip}`)
+        const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/characters?name=${name}&limit=${limit}&skip=${skip}`)
         // console.log('data Home:', response.data);
         //si response
         if (response) {

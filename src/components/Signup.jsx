@@ -23,7 +23,7 @@ const SignUp = ({ show, setShow, icon1, icon2, token, setToken }) => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await axios.post('http://localhost:3000/user/signup',
+      const response = await axios.post('https://site--marvbackend--s4qnmrl7fg46.code.run/user/signup',
         {
           username,
           email,

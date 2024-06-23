@@ -18,7 +18,7 @@ const Character = () => {
     const fetchData = async () => {
       //essayer une requete get
       try {
-        const response = await axios.get(`http://localhost:3000/character/${characterId}`)
+        const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/${characterId}`)
         console.log('data /character/:characterId :', response.data);
         //si response
         if (response) {
