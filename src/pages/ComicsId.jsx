@@ -15,7 +15,7 @@ const ComicsId = () => {
     const fetchData = async () => {
       //essayer une requete get
       try {
-        const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/${characterId}`)
+        const response = await axios.get(`https://site--marvbackend--s4qnmrl7fg46.code.run/comics/${characterId}`)
         console.log('data /comics/:characterId :', response.data);
         //si response
         if (response) {
