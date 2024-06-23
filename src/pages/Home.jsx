@@ -39,18 +39,20 @@ const Home = ({ name, limit, skip, fav, setFav, setSkip, page, setPage }) => {
     <>
       <main>
         <section className="wrapper" id='top'>
-          <div className="arrLeftTop" onClick={() => {
-            console.log('page:', page);
-            //au click, j'incrémente de 1
-            const newPage = page - 1;
-            console.log('newPage:', newPage);
-            //j'ajoute la valeur au useState Page
-            setPage(newPage);
-            // je multiplie la valeur de page par le nombre limit
-            const movPage = newPage * limit;
-            console.log('movPage:', movPage);
-            setSkip(movPage)
-          }}><FontAwesomeIcon icon='chevron-left' /></div>
+          {page < 0 ? (
+            <div className="arrLeftTop" onClick={() => {
+              console.log('page:', page);
+              //au click, j'incrémente de 1
+              const newPage = page - 1;
+              console.log('newPage:', newPage);
+              //j'ajoute la valeur au useState Page
+              setPage(newPage);
+              // je multiplie la valeur de page par le nombre limit
+              const movPage = newPage * limit;
+              console.log('movPage:', movPage);
+              setSkip(movPage)
+            }}><FontAwesomeIcon icon='chevron-left' /></div>
+          ) : (null)}
           <div className="arrRightTop" onClick={() => {
             console.log('page:', page);
             //au click, j'incrémente de 1

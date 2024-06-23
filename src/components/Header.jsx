@@ -36,7 +36,6 @@ const Header = ({ show, setShow, name, setName, limit, token, setToken, setLimit
                 <button onClick={() => {
                   { show === false ? (setShow(true)) : (setShow(false)) }
                 }} className="iconsignup"><FontAwesomeIcon icon='user-plus' /></button>
-
                 <Link to='/login' className="login">
                   <FontAwesomeIcon icon='right-to-bracket' />
                 </Link>
